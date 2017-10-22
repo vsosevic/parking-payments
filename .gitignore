@@ -13,7 +13,7 @@ nbproject
 Thumbs.db
 
 # composer vendor dir
-/vendor
+#/vendor
 
 # composer itself is not needed
 composer.phar
@@ -37,7 +37,5 @@ config/db.php
 web/uploads
 
 #congfig db
-config/database.php
-config/db.php
 config/database.php
 config/db.php
