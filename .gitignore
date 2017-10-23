@@ -13,7 +13,7 @@ nbproject
 Thumbs.db
 
 # composer vendor dir
-#/vendor
+/vendor
 
 # composer itself is not needed
 composer.phar
@@ -28,14 +28,3 @@ phpunit.phar
 
 tests/_output/*
 tests/_support/_generated
-
-#DB settings
-config/database.php
-config/db.php
-
-#user's photos
-web/uploads
-
-#congfig db
-config/database.php
-config/db.php

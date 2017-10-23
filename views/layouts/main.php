@@ -28,33 +28,25 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Matcha',
-        'brandUrl' => Yii::$app->homeUrl . 'site/index',
+        'brandLabel' => 'My Company',
+        'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'encodeLabels' => false,
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Chat', 'url' => ['/chat/index'], 'options' => ['class' => 'chat']],
-            ['label' => 'Visits', 'url' => ['/site/visits']],
-            ['label' => 'You\'ve visited', 'url' => ['/site/visited']],
-            ['label' => 'You\'re liked by', 'url' => ['/site/liked']],
-            ['label' => 'Notifications', 'url' => ['/site/notifications'], 'options' => ['class' => 'notifications']],
-            //['label' => 'About', 'url' => ['/site/about']],
-            //['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'SignUp', 'url' => ['/users/signup'], 'visible' => Yii::$app->user->isGuest],
-            ['label' => 'Settings', 'url' => ['/users/settings'], 'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/users/login']]
+                ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->user_name . ')',
+                    'Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
@@ -75,23 +67,11 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Matcha by Vladimir (like Vladimir Klitchko) Sosevich (vsosevic, 42school) <?= date('Y') ?></p>
+        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
-
-<script type="text/javascript">
-    var pathArray = location.href.split( '/' );
-    var protocol = pathArray[0]; //http:
-    var host = pathArray[2]; //localhost
-    var website = pathArray[3] + '/' + pathArray[4]; //matcha/web
-    var coreUrl = protocol + '//' + host + '/' + website; //http://localhost/matcha/web
-
-    var statusOnline = new EventSource(coreUrl + "/users/set-online-status");
-</script>
-<script type="text/javascript" src="<?php echo Yii::$app->request->baseUrl ?>/matchaJS/site.js"></script>
-
 
 <?php $this->endBody() ?>
 </body>
